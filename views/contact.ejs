@@ -9,21 +9,24 @@
   </div>
 <% } %>
 
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col" class="text-center">Action</th>
-    </tr>
-  </thead>
-  <tbody>
+
     <!--melakukan perulangan jika kondisi tidak ada object dalam array-->
     <% if (model.length < 1) { %>
-      <p>Contact's List is empty</p>
+      <div class="alert alert-danger alert-dismissible fade show">
+        Contact's List is empty
+      </div>
       <% } else { %>
       <!-- menunampilkan contact list -->
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
       <% let i = 1 %> 
       <% model.forEach((data) => { %>
         <tr>
