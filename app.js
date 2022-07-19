@@ -229,7 +229,7 @@ app.get('/contact/:name', (req, res) => {
 
   pool.query(sql, (err, result) => {
     if (err) {
-      return console.error(err.message);
+      
     }
     res.render('detail-page', 
     { 
@@ -254,11 +254,17 @@ app.get('/contact/delete/:name', (req, res) => {
       res.status('404')
       res.send('404')
     } else {
-      // pesan flash
-      req.flash('msg', 'Data Contact Berhasil Dihapus !');
-
-      // mengalihkan kembali ke halaman contact
-      res.redirect("/contact")
+      if (name !== sql) {
+        // pesan flash
+        req.flash('msg', `Contact's Not Found !`);
+        // mengalihkan kembali ke halaman contact
+        res.redirect("/contact")
+      } else {
+        // pesan flash
+        req.flash('msg', 'Data Contact Berhasil Dihapus !');
+        // mengalihkan kembali ke halaman contact
+        res.redirect("/contact")
+      }
     }
   })
 })

@@ -8,41 +8,39 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% } %>
-
-
-    <!--melakukan perulangan jika kondisi tidak ada object dalam array-->
-    <% if (model.length < 1) { %>
-      <div class="alert alert-danger alert-dismissible fade show">
-        Contact's List is empty
-      </div>
-      <% } else { %>
-      <!-- menunampilkan contact list -->
-      <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col" class="text-center">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-      <% let i = 1 %> 
-      <% model.forEach((data) => { %>
+<!--melakukan perulangan jika kondisi tidak ada object dalam array-->
+<% if (model.length < 1) { %>
+  <div class="alert alert-danger alert-dismissible fade show">
+    Contact's List is empty
+  </div>
+  <% } else { %>
+    <!-- menunampilkan contact list -->
+    <table class="table table-dark table-striped">
+      <thead>
         <tr>
-        <th class="align-middle" style="width: 8%;"><%= i++  %>. </th>
-        <td class="align-middle" style="width: 25%;"><%= data.name %> </td>
-        <td class="align-middle" style="width: 42%;"><%= data.email  %> </td>
-        <td class="text-center">
-          <a href="/contact/<%= data.name %>" type="button" class="btn btn-primary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
-          <a href="/contact/edit/<%= data.name %>" type="button" class="btn btn-warning me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa-solid fa-pencil"></i></a>
-          <a href="/contact/delete/<%= data.name %>" type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" onclick="return confirm('Yakin Ingin Menghapus Kontak Ini?')"><i class="fa-solid fa-trash"></i></a>
-        </td>
+          <th scope="col">No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col" class="text-center">Action</th>
         </tr>
-      <% }) %>
-    <% } %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+          <% let i = 1 %> 
+          <% model.forEach((data) => { %>
+            <tr>
+            <th class="align-middle" style="width: 8%;"><%= i++  %>. </th>
+            <td class="align-middle" style="width: 25%;"><%= data.name %> </td>
+            <td class="align-middle" style="width: 42%;"><%= data.email  %> </td>
+            <td class="text-center">
+              <a href="/contact/<%= data.name %>" type="button" class="btn btn-primary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+              <a href="/contact/edit/<%= data.name %>" type="button" class="btn btn-warning me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa-solid fa-pencil"></i></a>
+              <a href="/contact/delete/<%= data.name %>" type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" onclick="return confirm('Yakin Ingin Menghapus Kontak Ini?')"><i class="fa-solid fa-trash"></i></a>
+            </td>
+            </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  <% } %>
 
 <style scoped>
   .btn-danger:hover {

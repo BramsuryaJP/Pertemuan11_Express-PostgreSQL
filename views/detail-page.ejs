@@ -1,6 +1,11 @@
 
 <h1 class="mt-2"> Detail Contact : </h1>
-
+<% if (!model) { %>
+  <div class="alert alert-danger alert-dismissible fade show">
+    Contact's Not Found
+  </div>
+<% } else { %>
+ 
 <div class="card text-white bg-dark" style="width: 22rem;">
   <div class="card-body">
     <h5 class="card-title"><%= model.name %> </h5>
@@ -13,7 +18,7 @@
     <a href="/contact" class="card-link">Kembali</a>
   </div>
 </div>
-
+<% } %>
 
 <style scoped>
   .card-link {
