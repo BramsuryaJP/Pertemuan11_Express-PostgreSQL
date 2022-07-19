@@ -1,0 +1,39 @@
+
+<h1 class="mt-2"> Detail Contact : </h1>
+
+<div class="card text-white bg-dark" style="width: 22rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= model.name %> </h5>
+    <h6 class="card-subtitle mb-2 mt-2"><%= model.phone_number %> </h6>
+    <p class="card-text"><%= model.email %> </p>
+    <div class="column">
+      <a href="/contact/edit/<%= model.name  %>" class="pe-2"><button type="button" class="btn btn-warning mb-3"><i class="fa-solid fa-pencil pe-2"></i>Edit Contact</button></a>
+      <a href="/contact/delete/<%= model.name  %>"><button type="button" class="btn btn-danger mb-3" onclick="return confirm('Yakin Ingin Menghapus Kontak Ini?')"><i class="fa-solid fa-trash-can pe-2"></i>Delete Contact</button></a>
+    </div>
+    <a href="/contact" class="card-link">Kembali</a>
+  </div>
+</div>
+
+
+<style scoped>
+  .card-link {
+    text-decoration: none;
+    color: white;
+  }
+
+  .card-link:hover {
+    color: grey;
+  }
+
+  .btn-danger:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #DC3545;
+  }
+
+  .btn-warning:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #FFC107;
+  }
+</style>

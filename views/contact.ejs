@@ -1,0 +1,68 @@
+
+<h1 class="mt-2"> Contact List : </h1>
+<a href="/contact/add"><button type="button" class="btn btn-success mb-3"><i class="fa-solid fa-circle-plus pe-2"></i>Add Contact</button></a>
+
+<% if (msg.length > 0) { %>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <%= msg  %> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--melakukan perulangan jika kondisi tidak ada object dalam array-->
+    <% if (model.length < 1) { %>
+      <p>Contact's List is empty</p>
+      <% } else { %>
+      <!-- menunampilkan contact list -->
+      <% let i = 1 %> 
+      <% model.forEach((data) => { %>
+        <tr>
+        <th class="align-middle" style="width: 8%;"><%= i++  %>. </th>
+        <td class="align-middle" style="width: 25%;"><%= data.name %> </td>
+        <td class="align-middle" style="width: 42%;"><%= data.email  %> </td>
+        <td class="text-center">
+          <a href="/contact/<%= data.name %>" type="button" class="btn btn-primary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fa-solid fa-circle-info"></i></a>
+          <a href="/contact/edit/<%= data.name %>" type="button" class="btn btn-warning me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa-solid fa-pencil"></i></a>
+          <a href="/contact/delete/<%= data.name %>" type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" onclick="return confirm('Yakin Ingin Menghapus Kontak Ini?')"><i class="fa-solid fa-trash"></i></a>
+        </td>
+        </tr>
+      <% }) %>
+    <% } %>
+  </tbody>
+</table>
+
+<style scoped>
+  .btn-danger:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #DC3545;
+  }
+
+  .btn-warning:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #FFC107;
+  }
+
+  .btn-primary:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #0D6EFD;
+  }
+
+  .btn-success:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #198754;
+  }
+</style>

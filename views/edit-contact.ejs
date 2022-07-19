@@ -1,0 +1,38 @@
+
+<form method="POST" action="/contact/update">
+  <h1 class="mt-3 mb-2">Edit Contact Form</h1>
+
+  <% if (typeof errors != 'undefined') { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        <% errors.forEach(error => { %>
+         <li><%= error.msg %> </li>
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <input type="hidden" name="oldName" value="<%= model.oldName || model.name %>">
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Name</label>
+    <input name="name" type="text" class="form-control" id="inputName" value="<%= model.name %>">
+  </div>
+  <div class="mb-3">
+    <label for="inputPhoneNumber" class="form-label">Phone Number</label>
+    <input name="phoneNumber" type="text" class="form-control" id="inputPhoneNumber" value="<%= model.phone_number %>">
+  </div>
+  <div class="mb-3">
+    <label for="inputEmail" class="form-label">Email</label>
+    <input name="email" type="email" class="form-control" id="inputEmail" value="<%= model.email %>">
+  </div>
+  <button type="submit" class="btn btn-warning"  onclick="return confirm('Yakin Ingin Mengedit Kontak Ini ?')">Edit Contact</button>
+</form>
+
+<style scoped>
+  .btn-warning:hover {
+    border-color: #eee;
+    background-color: #eee;
+    color: #FFC107;
+  }
+</style>
